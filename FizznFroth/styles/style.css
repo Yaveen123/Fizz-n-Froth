@@ -1,0 +1,241 @@
+/* https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics#css_all_about_boxes */
+
+html, body {
+    font-family: 'Lexend Mega', sans-serif;
+    background-color: #daf5f0;
+    margin:0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/*MARK: Text*/
+
+/*Logo 'Fizz'*/
+.p_main_logo_fizz {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -8.96px;
+    display: inline-block;
+}
+
+/*Logo '&'*/
+.p_main_logo_n {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -5.6px;
+    display: inline-block;
+    
+}
+
+/*Logo 'Froth'*/
+.p_main_logo_froth {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: -100;
+    letter-spacing: -8.96px;
+}
+
+/*The slow banner 'HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024........'*/
+.p_banner_repeat {
+    font-family: 'Lexend';
+    text-wrap:nowrap;
+    animation: bannerRun 700s infinite linear;
+    padding-left: -100%; /*Initial offset*/
+    transform: translateX(60%);
+}
+@keyframes bannerRun {
+    to {
+      transform: translateX(0%);
+    }
+}
+
+.p_handledByFunc {
+    color: #ff0000;
+}
+
+.p_main_drink_header {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: -5.04px;
+    position:relative;
+}
+
+.p_main_drink_ingredients {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.8px;
+}
+
+.p_main_drink_list {
+    color: #000;
+    font-family: Lexend;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -15px;
+    margin-left: -20px;
+    display:inline-block
+}
+
+
+/*MARK: Divs */
+
+/*The top space with the "Order now!" button*/ 
+.header {
+    min-height: 70px;
+    height: 70px;
+    border-bottom: 3px solid #000;
+    margin:auto;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 15px;
+    position:sticky;
+    top:0;
+    z-index: 10000;
+    background-color: #daf5f0;
+}
+
+/*The container behind HERITAGE DAY 2024...*/
+.banner {
+    min-height: 31px;
+    height: 31px;
+    border-bottom: 3px solid #000;
+    margin:auto;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 15px;
+    background-color: #FDFD96;
+}
+
+/*Both 'Fizz &' 'Froth'*/
+.page1_title {
+    margin: auto;
+    width: 50%;
+    text-align: left;
+    width:fit-content;
+
+}
+
+/*Just fizz and froth*/ 
+.top_fizz_and_froth {
+    margin: auto;
+    min-height: 0px;
+    height: 65px;
+    text-align: left;
+    margin-top: -25px;
+
+}
+
+/*The line underneath 'froth'*/
+.divider {
+    border-bottom: 3px solid #000;
+    margin:-22px;
+    padding:0
+}
+
+.menuContainer {
+    padding-top: 1px;
+    margin-top: 22px;
+    background-color: #FFC0CB;
+    height:80%;
+    width: 100%;
+    text-align: center;
+    height:80%
+}
+
+.menuBox {
+    /*background-color: #ffdfe5;*/
+    width:fit-content;
+    margin:auto;
+    text-align: left
+}
+
+.ingredientsbutton_right {
+    width: 40%;
+    float:right;
+    margin-top:-42px;
+    display:flex;
+    justify-content: flex-end;
+    height:fit-content
+}
+
+.ingredientsbutton_left {
+    width:60%;
+    float:left;
+    height:fit-content
+}
+
+/*MARK: Buttons*/
+
+
+/*order now button!!*/
+.orderNowButton {
+    border-radius: 10px;
+    border: 3px solid #000;
+    background: #FFF;
+    box-shadow: 2px 2px 0px 0px #000;
+    display: inline-flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: "Lexend";
+    transition: all 0.2s ease-out;
+    display:inline-block
+}
+.orderNowButton:hover {
+    box-shadow: 0px 0px 0px 0px #000;
+    background: #FDFD96;
+}
+
+.addToCartButton {
+    border-radius: 10px;
+    border: 3px solid #000;
+    background: #FFF;
+    box-shadow: 2px 2px 0px 0px #000;
+    display: inline-flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: "Lexend";
+    transition: all 0.2s ease-out;
+    margin-right: 0;
+    margin-left: auto;
+}
+.addToCartButton:hover {
+    box-shadow: 0px 0px 0px 0px #000;
+    background: #FDFD96;
+}
+
+
+/*MARK: Images*/
+
+.img_main_drink {
+    margin-top: -30px;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 2px 2px 0px 0px #000;
+}
