@@ -53,12 +53,12 @@ function getDrinkImage() {
 }
 
 // Returns list of ingredients
-function getDrinkIngredients(){
+function getDrinkIngredients() {
     let array = data[String(currMenu)]["Ingredients"];
     let result = "";
 
     array.forEach((val, index) => {
-        results += "<li>" + val + "</li>";
+        result += "<li>" + val + "</li>";
     });
 
     document.getElementById("p_main_drink_list").innerHTML = result;
@@ -104,7 +104,7 @@ function createSliderItems() {
     drinksLength = Object.keys(data).length
     console.log(currMenu)
 
-    for (var i=0; i<drinksLength; i++) {
+    for (let i = 0; i < drinksLength; i++) {
 
         var procreatedItem = document.createElement("button");
         procreatedItem.textContent = i+1;
