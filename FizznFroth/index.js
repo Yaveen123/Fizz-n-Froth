@@ -20,10 +20,21 @@ data = {
         ],
         "Image":"images/DEMO2.png",
         "Price":5
+    },
+    "2":{
+        "Name":"Australia",
+        "Ingredients": [
+            "1 something",
+            "4 soetasdf juice",
+            "2 uwu cream",
+            "1x man juice"
+        ],
+        "Image":"images/DEMO.png",
+        "Price":5
     }
 }
 
-currMenu = 0
+currMenu = 2
 if (sessionStorage.getItem("cart") == null) {
     sessionStorage.setItem("cart", "[]")
 }
@@ -31,7 +42,7 @@ if (sessionStorage.getItem("cart") == null) {
 
 // Returns the name of the drink
 function getDrinkHeader() {
-    document.getElementById("p_main_drink_header").textContent = data[String(currMenu)]["Name"].toUpperCase() + " $" + data[String(currMenu)]["Price"]
+    document.getElementById("p_main_drink_header").textContent = data[String(currMenu)]["Name"].toUpperCase() 
 }
 
 
@@ -72,14 +83,37 @@ function addItemToCart() {
 
 function updateOrderNowButton(cartls) {
 
-    console.log(cartls)
-
     if (cartls.length-1 == 1) {
         document.getElementById("orderNowButton").textContent = "Order now! || " + (cartls.length-1) + " item";
     } else if (cartls.length-1 < 1) {
         document.getElementById("orderNowButton").textContent = "Order now!";
     } else {
         document.getElementById("orderNowButton").textContent = "Order now! || " + (cartls.length-1) + " items";
+    }
+}
+
+
+
+
+
+function createSliderItems() {
+    drinksLength = Object.keys(data).length
+    console.log(currMenu)
+
+    for (var i=0; i<drinksLength; i++) {
+
+        var procreatedItem = document.createElement("button");
+        procreatedItem.textContent = i+1;
+
+        if (i == currMenu) {
+            procreatedItem.className="sliderButton selected";
+        } else {
+            procreatedItem.className="sliderButton unselected";
+        }
+
+        procreatedItem.id = i;
+        var parent = document.getElementById('menuSlider')
+        parent.appendChild(procreatedItem);
     }
 }
 
