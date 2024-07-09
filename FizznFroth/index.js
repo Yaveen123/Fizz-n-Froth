@@ -24,7 +24,10 @@ data = {
 }
 
 currMenu = 0
-cart = []
+if (sessionStorage.getItem("cart") == null) {
+    sessionStorage.setItem("cart", "[]")
+}
+
 
 // Returns the name of the drink
 function getDrinkHeader() {
@@ -54,13 +57,29 @@ function getDrinkIngredients(){
 }
 
 function addItemToCart() {
-    cart.push(String(currMenu))
+    let cart = sessionStorage.getItem("cart");
+    console.log(cart)
 
-    if (cart.length == 1) {
-        document.getElementById("orderNowButton").textContent = "Order now! || " + cart.length + " item";
-    } else if (cart.length == 0) {
+    cart = cart.split(",");
+    cart.push(String(currMenu));
+    sessionStorage.setItem("cart", cart);
+
+
+    updateOrderNowButton(cart)
+}
+
+
+
+function updateOrderNowButton(cartls) {
+
+    console.log(cartls)
+
+    if (cartls.length-1 == 1) {
+        document.getElementById("orderNowButton").textContent = "Order now! || " + (cartls.length-1) + " item";
+    } else if (cartls.length-1 < 1) {
         document.getElementById("orderNowButton").textContent = "Order now!";
     } else {
-        document.getElementById("orderNowButton").textContent = "Order now! || " + cart.length + " items";
+        document.getElementById("orderNowButton").textContent = "Order now! || " + (cartls.length-1) + " items";
     }
 }
+
