@@ -52,19 +52,16 @@ function getDrinkImage() {
     document.getElementById("img_main_drink").src = data[String(currMenu)]["Image"].toUpperCase()
 }
 
-
-
 // Returns list of ingredients
 function getDrinkIngredients(){
+    let array = data[String(currMenu)]["Ingredients"];
+    let result = "";
 
-    // Loop over elements https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
-    // Loop over elements and return doc ID https://stackoverflow.com/questions/35108777/displaying-list-of-javascript-objects-as-html-list-items 
+    array.forEach((val, index) => {
+        results += "<li>" + val + "</li>";
+    });
 
-    arrayLength = data[String(currMenu)]["Ingredients"].length;
-
-    for (var i=0; i < arrayLength; i++) {
-        document.getElementById("p_main_drink_list").innerHTML += '<li>' + data[String(currMenu)]["Ingredients"][i] + '</li>';
-    }
+    document.getElementById("p_main_drink_list").innerHTML = result;
 }
 
 function addItemToCart() {
@@ -92,9 +89,16 @@ function updateOrderNowButton(cartls) {
     }
 }
 
+function click(id) {
+    currMenu = id;
 
+    getDrinkHeader();
+    getDrinkImage();
+    getDrinkIngredients();
 
-
+    document.getElementsByClassName("selected")[0].className = "sliderButton unselected";
+    document.getElementById(id).className = "sliderButton selected";
+}
 
 function createSliderItems() {
     drinksLength = Object.keys(data).length
@@ -112,7 +116,12 @@ function createSliderItems() {
         }
 
         procreatedItem.id = i;
-        var parent = document.getElementById('menuSlider')
+        
+        procreatedItem.onclick = () => {
+            click(i);
+        };
+        
+        var parent = document.getElementById('menuSlider');
         parent.appendChild(procreatedItem);
     }
 }
