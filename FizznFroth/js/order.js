@@ -196,7 +196,7 @@ function getTotal(countedItems) {
 let list = document.getElementsByClassName("order1_list")[0];
 let cart = getCart();
 
-if (!cart) {
+if (!cart.length) {
     list.innerHTML = "You don't have any items in your cart. Add some before proceeding.";
 } else {
     let countedItems = {};
