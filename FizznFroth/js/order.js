@@ -166,20 +166,24 @@ function getCart() {
     return cart;
 }
 
+function removeItemAll(arr, value) {
+    var i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value) {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+  }
+
 function removeItem(id) {
     let cart = sessionStorage.getItem("cart") || "";
-
     cart = cart.split(",");
-
-    let index = cart.indexOf(id);
-
-    // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript
-    if (index !== -1) { // only splice array when item is found
-        cart.splice(index); // 2nd parameter means remove one item only
-    }
+    cart = removeItemAll(cart, id);
 
     sessionStorage.setItem("cart", cart);
-
     location.reload();
 }
 
