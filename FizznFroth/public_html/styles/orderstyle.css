@@ -1,0 +1,247 @@
+/*MARK: Main*/
+html, body {
+    font-family: 'Lexend Mega', sans-serif;
+    background: #F8D6B3;
+    margin:0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+/*MARK: Text*/
+.order1_header {
+    color: #000;
+    font-family: "Lexend Mega";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: -5.6px;
+}
+
+/*The slow banner 'HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024........'*/
+.p_banner_repeat {
+    font-family: 'Lexend';
+    white-space: nowrap;
+    animation: bannerRun 1200s infinite linear;
+    transform: translateX(60%);
+}
+
+@keyframes bannerRun {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+/*MARK: Divs*/
+.header {
+    min-height: 70px;
+    height: 70px;
+    border-bottom: 3px solid #000;
+    margin:auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 15px;
+    position:sticky;
+    top:0;
+    z-index: 10000;
+    background-color: #daf5f0;
+}
+
+.order1container {
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.order1_list {
+    font-family: 'Lexend';
+    background-color: #FFF;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 2px 2px 0px 0px #000;
+    padding: 0px;
+}
+
+.order1_list_itemqty,.order1_list_total {
+    font-family: 'Lexend';
+    text-align: left;
+    padding: 20px;
+    height: 50px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.order1_list_itemqty:not(:last-child) {
+    border-bottom: 3px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.order1_list_itemqty > table {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+}
+
+.order1_list_total > table {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.order1_name {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.order1_remove {
+    font-size: smaller;
+    text-align: center;
+}
+
+.order1_price,.order1_total_price {
+    text-align: right;
+    font-size: large;
+    font-weight: bold;
+}
+
+.order1_total {
+    font-size: 25px;
+}
+
+.order1_total_price {
+    font-size: 25px;
+}
+
+.order1_remove > a {
+    color: black;
+}
+
+/*The container behind HERITAGE DAY 2024...*/
+.banner {
+    min-height: 31px;
+    height: 31px;
+    border-bottom: 3px solid #000;
+    margin:auto;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 15px;
+    background-color: #FDFD96;
+}
+
+/*MARK: Buttons*/
+.backButton {
+    padding:3px;
+    padding-bottom: 0px;
+    box-shadow: 2px 2px 0px #000;
+    border-radius: 10px;
+    background-color: #FFF;
+    align-items: center;
+    border: 3px solid #000;
+    transition: 0.1s all;
+}
+.backButton:hover {
+    box-shadow: 0px 0px 0px #000;
+    background-color: #FDFD96;
+}
+
+.box {
+    height: 250px;
+    width: 250px;
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 2px 2px 0px 0px #000;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qrError {
+    text-align: center;
+    font-family: "Lexend";
+}
+
+.orderKey {
+    font-family: monospace;
+    font-size: 20px;
+}
+
+/*MARK: Images*/
+.qrImage {
+    width: 100%;
+}
+
+.instruction {
+    font-family: "Lexend", "Lexend Mega", sans-serif;
+    text-align: center;
+}
+
+.orderNumber {
+    font-size: 72px;
+    font-weight: 900;
+}
+
+.continue {
+    /* Frame 14 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    float: right;
+
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 10px;
+
+    font-family: "Lexend";
+    transition: 0.1s all;
+}
+
+.continue:hover{
+    box-shadow: 0px 0px 0px #000;
+    background-color: #FDFD96;
+}
+
+.name {
+    /* Frame 14 */
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 40px;
+
+    padding: 10px;
+
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 10px;
+
+    font-family: "Lexend";
+    font-size: larger;
+}
+
+.name2 {
+    font-weight: bold;
+}
