@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!--Stuff that you should include in every html page-->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+        <!--Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+
+        <!--heading and style sheet reference-->
+        <title>Fizz&Froth - Home</title>
+        <link href="styles/indexstyle.css" rel="stylesheet"/>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+        <!--scriptsss-->
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
+    
+    
+    
+    <body>
+
+        <!--Order now button-->
+        <div class="header">
+            <button type="button" 
+            class="orderNowButton" 
+            id="orderNowButton"
+            style="color: #000;"
+            onclick="window.location.href = 'order.html';">Order now!</button>
+        </div>
+
+        <script>
+            updateOrderNowButton(sessionStorage.getItem("cart").split(","))
+        </script>
+
+
+        <!--HERITAGE DAY banner-->
+        <div class="banner">
+            <p class="p_banner_repeat">HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 </p>
+        </div>
+
+        <!--Fizz and Froth logo-->
+        <div class="page1_title">
+            <div class="top_fizz_and_froth">
+                <p class="p_main_logo_fizz">Fizz</p>
+                <p class="p_main_logo_n">&</p>
+            </div>
+            <p class="p_main_logo_froth">Froth</p>
+
+        </div>
+        
+        <!--Space between Fizz and Froth and menu content-->
+        <div class="divider"></div>
+
+        <!--Bottom content-->
+        <div class="menuContainer">
+            <!--Menu content-->
+            <div class="menuBox">
+                <!--The drink name.--> <p id="p_main_drink_header" class="p_main_drink_header"></p> <script>getDrinkHeader()</script>
+                <!--The image of the drink--> <img id="img_main_drink" class="img_main_drink"> <script>getDrinkImage()</script>                
+                <!--The description of the drink-->
+                <div class="menuSplit">
+                    <div class='ingredientsbutton_left'>
+                        <script>getDrinkDescription()</script>
+                    </div>
+    
+                    <!--Add to cart button-->
+                    <div class='ingredientsbutton_right'>
+                        <button onclick="addItemToCart()" style="color: #000;" type="button" class="addToCartButton" id="addToCartButton" >Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--The side scroller menu-->
+            <div class="menuSlider" id="menuSlider">
+                <script>
+                    createSliderItems()
+                </script>
+                
+                <!--
+                <button class="sliderButton unselected" id="1">1</button>
+                <button class="sliderButton selected" id="2">2</button>
+                -->
+                
+            </div>
+        </div>        
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!--Stuff that you should include in every html page-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+
+    <!--heading and style sheet reference-->
+    <title>Fizz&Froth - Checkout</title>
+    <link href="styles/orderstyle.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<body style="background-color: #FCDFFF;">
+    <div class="header">
+        <button class="backButton" onclick="window.location.href = 'order2.html';">
+            <!--BACK BUTTON SVG-->
+            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                <g clip-path="url(#clip0_125_188)">
+                  <path d="M25.8333 14.2084H10.1137L17.3341 6.98794L15.5 5.16669L5.16663 15.5L15.5 25.8334L17.3212 24.0121L10.1137 16.7917H25.8333V14.2084Z" fill="black"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_125_188">
+                    <rect width="31" height="31" rx="10" fill="white"/>
+                  </clipPath>
+                </defs>
+            </svg>
+        </button>
+
+        
+    </div>
+
+    <div class="banner">
+      <p class="p_banner_repeat">HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 HERITAGE DAY 2024 </p>
+    </div>
+
+
+    <div class="order1container">
+        <p class="order1_header">READY</p>
+          <div class="order1container2">
+            <p class="instruction" style="text-align: left;">
+              You're ready to order!
+              <br>
+              <b>Show this QR code to the cashier.</b>
+            </p>
+            <div class="qrContainer" style="display: none;">
+              <div class="box">
+                <img class="qrImage" src="/images/loading.gif" alt="">
+              </div>
+            </div>
+            <br>
+            <br>
+            <p class="instruction" style="text-align: left;">
+              Your order information:
+              <br>
+              <br>
+              Name:
+              <span class="name2"></span>
+              <br>
+            </p>
+          <div class="order1_list">
+            <!-- To be rendered by JavaScript-->
+          </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/order3.js"></script>
+</body>
+
+
+
+</html>
