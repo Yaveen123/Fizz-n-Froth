@@ -57,14 +57,23 @@ if (isset($_POST['name']) && isset($_POST['order'])) {
         finish();
     }
 
+    $db = new SQLite3(DATABASE);
+
     // See if order IDs and quantities are indeed integers.
     foreach ($order as $id => $quantity) {
-        if (!(is_int($id) || is_int($quantity))) {
+        if (!(is_int($id) && is_int($quantity))) {
             finish();
         }
-    }
 
-    $db = new SQLite3(DATABASE);
+        $sql = $db->prepare("SELECT COUNT(*) FROM items WHERE id = :id LIMIT 1");
+        $sql->bindValue(":id", $id + 1, SQLITE3_INTEGER); // Neglected to make sure that the foreign key actually lined up with the item ID. I'll probably fix this later.
+        $result = $sql->execute();
+        $row = $result->fetchArray();
+
+        if (!$row[0]) {
+            finish($db);
+        }   
+    }
 
     if (isset($_COOKIE[ORDER_KEY])) {
         $order_key = $_COOKIE[ORDER_KEY]; // Order key if the user has already ordered (looked at checkout once).
