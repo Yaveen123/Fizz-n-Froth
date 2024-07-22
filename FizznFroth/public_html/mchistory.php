@@ -1,22 +1,10 @@
 <?php
 
 include "api/all_items.php";
+include "settings.php";
 
 define('DATABASE', '../fizz.db');
 define('ORDER_STATUS', 3);
-
-$valid_passwords = array("admin" => "fizz2024");
-$valid_users = array_keys($valid_passwords);
-
-const not_authorised_page = <<<END
-<html>
-<head><title>401 Authorization Required</title></head>
-<body bgcolor="white">
-<center><h1>401 Authorization Required</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-END;
 
 $user = $_SERVER['PHP_AUTH_USER'];
 $pass = $_SERVER['PHP_AUTH_PW'];
@@ -80,7 +68,9 @@ switch ($_GET["mode"]) {
         die("Order unmarked as completed! You can now find it on the Item View page.<br><br><a href='/mcdonalds.php'>Back to Item View</a>");
         break;
     case "delete":
-        $db->query("DELETE FROM orders WHERE id = " . $_GET["order_id"]);
+        //$db->query("DELETE FROM orders WHERE id = " . $_GET["order_id"]);
+        // Probably shouldn't delete the order entirely since it's easier to restore from mistakes.
+        $db->query("UPDATE orders SET status = 4 WHERE id = " . $_GET["order_id"]);
         die("Order deleted.<br><br><a href='/mcdonalds.php'>Back to Item View</a><br><br><a href='/mchistory.php'>Back to History</a>");
         break;
 }
@@ -120,6 +110,20 @@ $db->close();
             </div>
         <?php endforeach; ?>
         <p>Finished showing <?= count($orders) ?> item(s).</p>
+        <p>This server is running Wynyard <?= VERSION ?>.</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="navigation">
+        <a href="/mcdonalds.php"><button class="historyButton"><img class="back" src="images/left.png">&nbsp;Back</button></a>
     </div>
 </body>
 </html>

@@ -1,21 +1,9 @@
 <?php
 
 include "api/all_items.php";
+include "settings.php";
 
 define('DATABASE', '../fizz.db'); // CHANGE THIS
-
-$valid_passwords = array("admin" => "fizz2024");
-$valid_users = array_keys($valid_passwords);
-
-const not_authorised_page = <<<END
-<html>
-<head><title>401 Authorization Required</title></head>
-<body bgcolor="white">
-<center><h1>401 Authorization Required</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-END;
 
 $user = $_SERVER['PHP_AUTH_USER'];
 $pass = $_SERVER['PHP_AUTH_PW'];
@@ -137,6 +125,16 @@ switch ($_GET["mode"]) {
     <div class="grid-container"></div> 
     <script src="/js/itemRender.js"></script>
     <p>Finished showing <span id="itemCount">0</span> item(s).</p>
+    <p>This server is running Wynyard <?= VERSION ?>.</p>
+    <!-- provide enough spacing so that the bar isn't covering everything -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="navigation">
         <a href="/mchistory.php"><button class="historyButton"><img class="clock" src="images/history-clock-button.png">&nbsp;History</button></a>
     </div>
