@@ -19,8 +19,9 @@ body {
 }
 
 .orderID {
-    height: 100%;
+    height: 75px;
     aspect-ratio: 1;
+    max-width: 75px;
     border: 1px solid #A9A9A9;
     border-radius: 6px;
     font-size: 36px;
@@ -31,16 +32,21 @@ body {
 }
 
 .name {
-    width: 200px;
+    width: 100%;
+    max-width: 150px; /* oh my flexbox... */
     text-align: center;
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-basis: 0 0 250px;
 }
 
 .separator {
     width: 1px;
-    margin: 5px; /* i do not feel like fixing css bugs today */
     height: 100%;
     background-color: #A9A9A9;
+    box-sizing: border-box;
 }
 
 .details {
@@ -81,4 +87,33 @@ body {
 .actionButtons .delete {
     color: #FFF;
     background-color: #DB4F00;
+}
+
+.navigation {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #FFF;
+    height: 40px;
+    padding: 10px;
+    position: -webkit-sticky; /* Safari */
+    border-top: solid #5E5E5E 1px;
+}
+
+.navigation button {
+    color: #FFF;
+    background-color: #007BFF;
+    border: 0;
+    border-radius: 6px;
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: bold;
+    height: 100%;
+    padding: 10px;
+}
+
+/* Author: https://www.flaticon.com/authors/icon-wind */
+.back {
+    filter: brightness(0) invert(1);
 }

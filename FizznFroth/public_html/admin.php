@@ -1,42 +1,11 @@
 <?php
 include "api/all_items.php";
+include "settings.php";
 
 define('DATABASE', '../fizz.db'); // CHANGE THIS
 
-$valid_passwords = array ("admin" => "fizz2024");
-$valid_users = array_keys($valid_passwords);
-
-const not_authorised_page = <<<END
-<html>
-<head><title>401 Authorization Required</title></head>
-<body bgcolor="white">
-<center><h1>401 Authorization Required</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-END;
-
-const default_page = <<<END
-    <html>
-    <head>
-       <title>Logged in</title>
-    </head>
-    <body>
-        You've logged in successfully!
-        <br>
-        You can now scan QR codes with your camera app.
-        <br>
-        <h3>Need to enter an order code?</h3>
-        <form action="/admin.php" method="get">
-            <label>Enter order code: </label>
-            <input type="text" name="order_key" placeholder="Order code" minlength="13" maxlength="13">
-            <input type="submit" value="go">
-        </form>
-        <h3>Drink View</h3>
-        <a href="/mcdonalds.php">Go to Drink View</a>
-    </body>
-    </html>
-END;
+$default_page = file_get_contents("admin_index.html");
+$default_page = sprintf($default_page, VERSION);
 
 function setOrderMode($db, $id, $status) {
     $db->query("UPDATE orders SET status = " . $status . " WHERE id = " . $id);
@@ -60,13 +29,13 @@ if (!isset($order_key)) {
 }
 
 if (!isset($order_key)) {
-    die(default_page);
+    die($default_page);
 }
 
 if (strlen($order_key) === 13) {
     $db = new SQLite3(DATABASE);
 
-    $sql = $db->prepare('SELECT * FROM orders WHERE order_key = :order_key LIMIT 1');
+    $sql = $db->prepare('SELECT * FROM orders WHERE order_key = :order_key AND status != 4 LIMIT 1');
     $sql->bindValue(":order_key", $order_key, SQLITE3_TEXT);
     $result = $sql->execute();
     $row = $result->fetchArray();
@@ -81,12 +50,15 @@ if (strlen($order_key) === 13) {
         if ($status === 2) {
             $db->close();
             die("Order was already approved!");
+        } elseif ($status === 3) {
+            $db->close();
+            die("This order has already been completed and cannot be modified.");
         }
 
         if (isset($_POST["unlock"])) {
             setOrderMode($db, $id, 0);
             $db->close();
-            die("Unlocked order. (tell the customer to refresh the page)");
+            die("Unlocked order. The customer can now make changes (tell them to press the back button)");
         } elseif (isset($_POST["approve"])) {
             $db->query("UPDATE orders SET approved_on = " . time() . " WHERE id = " . $id);
             setOrderMode($db, $id, 2);
@@ -105,7 +77,7 @@ if (strlen($order_key) === 13) {
         echo "Couldn't find the order.<br><br>";
         echo "If you got here by scanning a QR code, ask the customer to refresh the page and scan the code again. <br>";
         echo "If you typed in the order code, press the back button on your web browser and try typing it again. Make sure you type it in correctly. <br><br>";
-        echo "DM me on Discord if you need support.";
+        echo "DM me on Discord if you need support. (@test__xyz)";
         $db->close();
         die;
     }
@@ -204,19 +176,15 @@ if (strlen($order_key) === 13) {
             </div>
         </div>
         <br>
-        <!-- These forms have to be separated here to make it work on Samsung Internet. Thank you, Samsung!!! <3 -->
         <form action="/admin.php" method="post">
             <input type="hidden" name="order_key" value="<?= $order_key ?>">
             <input type="submit" name="approve" value="Approve order">
-        </form>
-        <br>
-        <br>
-        <form action="/admin.php" method="post">
-            <input type="hidden" name="order_key" value="<?= $order_key ?>">
+            <br>
+            <br>
+            <br>
             <input type="submit" name="unlock" value="Unlock order">
         </form>
     </div>
-
 </body>
 </html>
 <?php

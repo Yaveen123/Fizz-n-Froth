@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+   <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-image: url(images/colorful_cups.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            font-family: "Inter", sans-serif;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        .lg  {
+            padding: .5rem 1rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            line-height: 1.5;
+            border-radius: .3rem;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid black;
+            padding: 16px;
+            margin: auto;
+            width: 100%%;
+            max-width: 768px;
+        }
+
+        .note {
+            color: black;
+            background-color: lightyellow;
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        .rainbow {
+            color: white;
+            background-color: #FF0000;
+            animation: bgColor 5s infinite linear;
+        }
+
+        @keyframes bgColor {
+            12.5%% {
+                background-color: #FF0000;
+            }
+            25%% {
+                background-color: #FFA500;
+            }
+            37.5%% {
+                background-color: #FFFF00;
+            }
+            50%% {
+                background-color: #7FFF00;
+            }
+            62.5%% {
+                background-color: #00FFFF;
+            }
+            75%% {
+                background-color: #0000FF;
+            }
+            87.5%% {
+                background-color: #9932CC;
+            }
+            100%% {
+                background-color: #FF1493;
+            }
+        }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You've logged in successfully!</h1>
+        You can now scan QR codes with your camera app.
+        <br>
+        <br>
+        <div class="note">
+            Please note that there may be some issues with the admin panel and <b>Samsung Internet</b>.
+            <br>
+            If possible, set your default browser to Chrome (or something else) when using a Samsung device. Thank you.
+        </div>
+        <h3>Need to enter an order code?</h3>
+        To get an order code, ask the customer to tap/click on the QR code.
+        <br>
+        <br>
+        <form action="/admin.php" method="get">
+            <label>Enter order code: </label>
+            <input type="text" name="order_key" placeholder="Order code" minlength="13" maxlength="13">
+            <input type="submit" value="-->">
+        </form>
+        <h3>Drink View</h3>
+        <a href="/mcdonalds.php"><button class="btn lg rainbow">Click here to go to the Drink View.</button></a>
+        <h3>Support</h3>
+        Discord:
+        <ul>
+            <li>@test__xyz</li>
+            <li>@yaveen</li>
+        </ul>
+        <br>
+        This server is running Wynyard %s.
+    </div>
+</body>
+</html>
