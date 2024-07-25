@@ -1,7 +1,7 @@
 <?php
 define('DATABASE', '../../fizz.db'); // CHANGE THIS
 define('ORDER_KEY', 'order_key'); // Name of order key cookie.
-define('ADMINISTRATORS', array('127.0.0.1', '::1')); // IPs that can place more than one order.
+define('ADMINISTRATORS', array('127.0.0.1', '::1', '153.107.46.175')); // IPs that can place more than one order.
 
 $success = false;
 
