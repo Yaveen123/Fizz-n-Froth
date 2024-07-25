@@ -1,11 +1,11 @@
 <?php
 define('DATABASE', '../../fizz.db'); // CHANGE THIS
 define('ORDER_KEY', 'order_key'); // Name of order key cookie.
-// define('ADMINISTRATORS', array('127.0.0.1')); // IPs that can place more than one order.
+define('ADMINISTRATORS', array('127.0.0.1', '::1')); // IPs that can place more than one order.
 
 $success = false;
 
-function finish($db = null, $order_key = null, $status = null) {
+function finish($db = null, $order_key = null, $status = null, $mes = null) {
     global $success;
 
     if ($db) {
@@ -22,6 +22,10 @@ function finish($db = null, $order_key = null, $status = null) {
 
     if (isset($status)) {
         $response["status"] = $status;
+    }
+
+    if (isset($mes)) {
+        $response["message"] = $mes;
     }
     
     $response = json_encode($response);
@@ -84,7 +88,7 @@ if (isset($_POST['name']) && isset($_POST['order'])) {
         $row = $result->fetchArray();
 
         if (!$row) {
-            finish($db);
+            finish($db, mes: "Couldn't find your order? (try clearing your cookies and ordering again)");
         }
 
         $id = $row[0];
@@ -107,6 +111,16 @@ if (isset($_POST['name']) && isset($_POST['order'])) {
         }
     } else {
         // Create the order in the database.
+
+        $sql = $db->prepare("SELECT COUNT(*) FROM orders WHERE ip = :ip LIMIT 1");
+        $sql->bindValue(":ip", $_SERVER['REMOTE_ADDR'], SQLITE3_TEXT);
+        $result = $sql->execute();
+        $row = $result->fetchArray();
+
+        if ($row[0] && !in_array($_SERVER["REMOTE_ADDR"], ADMINISTRATORS)) {
+            finish($db, mes: "Sorry, you have exceeded the order limit for your IP ({$_SERVER['REMOTE_ADDR']})");
+        }
+
         $order_key = uniqid();
 
         $sql = $db->prepare('INSERT INTO orders (ip, order_key, name, status) VALUES (:ip, :order_key, :name, :status)');
