@@ -144,7 +144,7 @@ function checkout(name, countedItems) {
         } else if (jsonResponse.status) { // Check for statuses that aren't 0.
             checkoutNext(jsonResponse.order_key)
         } else {
-            checkoutError();
+            checkoutError(jsonResponse.message);
         }
       }).catch (error => {
         checkoutError(error);
