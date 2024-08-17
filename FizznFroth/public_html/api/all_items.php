@@ -11,7 +11,8 @@ function allItems($db) {
             'name' => $row[2],
             'description' => $row[3],
             'image' => $row[4],
-            'price' => $row[5]
+            'price' => $row[5],
+            'womped_womped' => (bool) $row[6]
         );
 
         array_push($items, $entry);

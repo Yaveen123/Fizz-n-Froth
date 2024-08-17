@@ -77,7 +77,7 @@ if (strlen($order_key) === 13) {
         echo "Couldn't find the order.<br><br>";
         echo "If you got here by scanning a QR code, ask the customer to refresh the page and scan the code again. <br>";
         echo "If you typed in the order code, press the back button on your web browser and try typing it again. Make sure you type it in correctly. <br><br>";
-        echo "DM me on Discord if you need support. (@test__xyz)";
+        echo "DM me on Discord if you need support. (@tests._.)";
         $db->close();
         die;
     }
@@ -146,8 +146,16 @@ if (strlen($order_key) === 13) {
                     <table>
                         <tr>
                             <td>
-                                <div class="order1_name"><?= $items[$row[1]]["name"] ?></div>
-                                <div class="order1_quantity">Qty: <?= $row[2] ?></div>
+                                <div class="order1_name">
+                                    <?php if ($items[$row[1]]["womped_womped"]): ?>
+                                        <span style="background-color: red">SOLD OUT</span>
+                                        <br>
+                                    <?php endif; ?>
+                                    <?= $items[$row[1]]["name"] ?>
+                                </div>
+                                <div class="order1_quantity">
+                                    Qty: <?= $row[2] ?>
+                                </div>
                             </td>
                             <td>
                                 <div class="order1_price">

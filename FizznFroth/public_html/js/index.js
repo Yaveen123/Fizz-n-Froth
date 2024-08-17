@@ -30,16 +30,23 @@ function getDrinkDescription() {
     document.getElementsByClassName("ingredientsbutton_left")[0].innerHTML = data[currMenu]["description"];
 }
 
+function updateAddToCartButton() {
+    let text = data[currMenu]['womped_womped'] ? 'SOLD OUT' : 'Add to cart';
+    document.getElementById('addToCartButton').innerHTML = text;
+}
+
 function addItemToCart() {
-    let cart = sessionStorage.getItem("cart");
-    console.log(cart)
+    if (!data[currMenu]['womped_womped']) {
+        let cart = sessionStorage.getItem("cart");
+        console.log(cart)
 
-    cart = cart.split(",");
-    cart.push(currMenu);
-    sessionStorage.setItem("cart", cart);
+        cart = cart.split(",");
+        cart.push(currMenu);
+        sessionStorage.setItem("cart", cart);
 
 
-    updateOrderNowButton(cart)
+        updateOrderNowButton(cart)
+    }
 }
 
 
@@ -61,6 +68,7 @@ function click(id) {
     getDrinkHeader();
     getDrinkImage();
     getDrinkDescription();
+    updateAddToCartButton();
 
     document.getElementsByClassName("selected")[0].className = "sliderButton unselected";
     document.getElementById(id).className = "sliderButton selected";
