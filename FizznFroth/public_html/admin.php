@@ -77,7 +77,6 @@ if (strlen($order_key) === 13) {
         echo "Couldn't find the order.<br><br>";
         echo "If you got here by scanning a QR code, ask the customer to refresh the page and scan the code again. <br>";
         echo "If you typed in the order code, press the back button on your web browser and try typing it again. Make sure you type it in correctly. <br><br>";
-        echo "DM me on Discord if you need support. (@tests._.)";
         $db->close();
         die;
     }
